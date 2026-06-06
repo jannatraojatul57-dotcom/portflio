@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --glassmorphism-light: rgba(255, 255, 255, 0.7);
+  --glassmorphism-dark: rgba(30, 30, 46, 0.7);
+}
+
+@layer components {
+  .glass-light {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 rounded-xl shadow-lg;
+  }
+  
+  .glass-dark {
+    @apply bg-slate-900/70 backdrop-blur-md border border-slate-700/30 rounded-xl shadow-lg;
+  }
+  
+  .glass {
+    @apply backdrop-blur-md border rounded-xl shadow-glass transition-all duration-300;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply transition-colors duration-300;
+}
