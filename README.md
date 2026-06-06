@@ -1,197 +1,142 @@
-# Janna Trao Jatul's Portfolio
+# Portfolio Website - Vue 3 + Tailwind CSS + FastAPI
 
-A modern, beautiful portfolio website built with Vue.js 3, FastAPI, and Tailwind CSS, featuring glassmorphism design and dark/light mode support.
+A premium, modern portfolio website built with Vue 3, Tailwind CSS, and Vite. Features glassmorphism design, dark/light mode, and full responsiveness.
 
-## Features
+## ✨ Features
 
-✨ **Modern Design**
-- Glassmorphism UI with backdrop blur effects
+- Modern glassmorphism design
+- Dark/Light mode toggle
+- Fully responsive (mobile-first)
+- Fast performance with Vite
 - Smooth animations and transitions
-- Responsive grid layouts
-
-🌓 **Dark/Light Mode**
-- Toggle between light and dark themes
-- Persistent theme preference using localStorage
-- System preference detection
-
-⚡ **Tech Stack**
-- **Frontend**: Vue.js 3, Vite, Tailwind CSS
-- **Backend**: FastAPI, Python
-- **Deployment**: Vercel (serverless)
-
-🎨 **Features**
-- Portfolio showcase
-- Skills display
-- Project gallery with tags
-- Contact form with backend integration
-- Smooth scrolling navigation
+- CV download functionality
+- Contact form
+- Project filtering
 - SEO optimized
 
-## Project Structure
+## 🛠 Tech Stack
 
-```
-portflio/
-├── src/
-│   ├── main.js          # Vue app entry point
-│   ├── App.vue          # Main component
-│   └── index.css        # Global styles
-├── api/
-│   └── main.py          # FastAPI backend
-├── index.html           # HTML entry point
-├── vite.config.js       # Vite configuration
-├── tailwind.config.js   # Tailwind CSS configuration
-├── postcss.config.js    # PostCSS configuration
-├── vercel.json          # Vercel deployment config
-├── package.json         # Frontend dependencies
-├── requirements.txt     # Python dependencies
-└── README.md           # This file
-```
+- Vue 3 (Composition API)
+- Tailwind CSS 3
+- Vite
+- Vercel (Hosting)
 
-## Installation
+## 📦 Installation
 
 ### Prerequisites
-- Node.js 16+
-- Python 3.11+
+- Node.js >= 16.0.0
 - npm or yarn
 
 ### Setup
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/jannatraojatul57-dotcom/portflio.git
-   cd portflio
-   ```
-
-2. **Install Frontend Dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Install Backend Dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-## Development
-
-### Run Backend
 ```bash
-npm run api
+npm install
 ```
-The FastAPI backend will run at `http://localhost:8000`
 
-### Run Frontend
-In a new terminal:
+### Development
+
 ```bash
 npm run dev
 ```
-The Vue app will run at `http://localhost:5173`
 
-The frontend is configured to proxy API requests to the backend.
+Server runs at: http://localhost:3000
 
-## Production Build
+### Production Build
 
-### Build Frontend
 ```bash
 npm run build
-```
-This creates optimized production build in `dist/` folder.
-
-### Deploy to Vercel
-
-1. **Install Vercel CLI**
-   ```bash
-   npm install -g vercel
-   ```
-
-2. **Deploy**
-   ```bash
-   vercel
-   ```
-
-3. **Environment Variables** (if needed)
-   - Add any required environment variables in Vercel dashboard
-
-The `vercel.json` file is pre-configured to:
-- Run FastAPI backend on `/api/*` routes
-- Serve Vue.js frontend from `dist/`
-- Handle client-side routing
-
-## API Endpoints
-
-- `GET /` - Health check
-- `GET /api/projects` - Get all projects
-- `GET /api/projects/{id}` - Get specific project
-- `GET /api/skills` - Get all skills
-- `GET /api/about` - Get about information
-- `POST /api/send-email` - Send contact form message
-- `GET /health` - Health check for monitoring
-
-## Customization
-
-### Update Portfolio Content
-Edit `api/main.py` to update:
-- `PROJECTS` - Your project portfolio
-- `SKILLS` - Your technical skills
-- About information
-
-### Styling
-- **Colors**: Modify `tailwind.config.js`
-- **Glass effect**: Edit `src/index.css`
-- **Component styles**: Edit `src/App.vue`
-
-### Contact Form
-Replace the email sending logic in `api/main.py` with your email service (SendGrid, Mailgun, etc.):
-
-```python
-# Example with SendGrid
-from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import Mail
-
-sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
-message = Mail(...)
-sg.send(message)
+npm run preview
 ```
 
-## Environment Variables
-
-Create a `.env` file in the root directory:
+## 📁 Project Structure
 
 ```
-VITE_API_URL=http://localhost:8000
+src/
+├── components/
+│   ├── Nav.vue
+│   ├── Footer.vue
+│   ├── ProjectCard.vue
+│   ├── TechBadge.vue
+│   ├── SkillCard.vue
+│   ├── ExperienceCard.vue
+│   └── ContactMethod.vue
+├── pages/
+│   ├── Home.vue
+│   ├── About.vue
+│   ├── Projects.vue
+│   └── Contact.vue
+├── App.vue
+├── main.js
+└── style.css
 ```
 
-For backend (if using email service):
+## 🎯 Pages
+
+### Home
+- Hero section with CTA
+- Statistics
+- Tech stack
+- Featured projects
+
+### About
+- Introduction
+- Skills by category
+- Experience timeline
+
+### Projects
+- Filterable gallery
+- Technology tags
+- Project details
+
+### Contact
+- Contact form
+- Social links
+- Contact info
+
+## 🎨 Customization
+
+### Update Personal Info
+- Edit `src/pages/Home.vue` for hero content
+- Edit `src/pages/About.vue` for skills/experience
+- Edit `src/pages/Projects.vue` for projects
+- Edit `src/pages/Contact.vue` for contact details
+
+### Add CV
+1. Place your CV in `public/cv.pdf`
+2. Update filename in `src/components/Nav.vue`
+
+### Customize Colors
+Edit `tailwind.config.js`
+
+## 🚀 Deploy with Vercel
+
+### Option 1: GitHub (Recommended)
+1. Push to GitHub
+2. Go to vercel.com
+3. Import your repository
+4. Deploy
+
+### Option 2: Vercel CLI
+```bash
+npm install -g vercel
+vercel
 ```
-SENDGRID_API_KEY=your_key_here
-DATABASE_URL=your_database_url
+
+## 🔗 Backend Integration
+
+### FastAPI
+Update API endpoints:
+```javascript
+const API_URL = 'https://your-api.com/api'
 ```
 
-## Browser Support
+### Laravel
+Similarly update for Laravel backend
 
-- Chrome/Edge: Latest 2 versions
-- Firefox: Latest 2 versions
-- Safari: Latest 2 versions
-- Mobile browsers: Full support
+## 📄 License
 
-## Performance
-
-- Optimized bundle size with Vite
-- Lazy loading components
-- Image optimization
-- CSS minification with Tailwind
-- FastAPI async endpoints for fast response times
-
-## License
-
-MIT License - feel free to use this portfolio as a template
-
-## Contact
-
-- Email: your-email@example.com
-- GitHub: [@jannatraojatul57-dotcom](https://github.com/jannatraojatul57-dotcom)
-- LinkedIn: [Janna Trao Jatul](https://linkedin.com)
+Free to use for personal and commercial projects.
 
 ---
 
-Built with ❤️ using Vue.js, FastAPI, and Tailwind CSS
+**Made with Vue 3 & Tailwind CSS**
